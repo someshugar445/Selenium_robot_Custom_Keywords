@@ -13,3 +13,5 @@ user guide : http://robotframework.org/robotframework/latest/RobotFrameworkUserG
 Selenium library: https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html
 
 Selenim : https://www.selenium.dev/documentation/en/
+
+Selenium WebDriver : https://selenium-python.readthedocs.io/getting-started.html
