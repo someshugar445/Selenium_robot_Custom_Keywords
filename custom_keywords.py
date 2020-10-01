@@ -19,7 +19,7 @@ driver = webdriver.Chrome(r"C:\Users\sougar\Downloads\chromedriver_win32\chromed
 actions = ActionChains(driver)
 
 
-class AmazonUI():
+class MyKeywords():
     @keyword('launch browser')
     def sample(self, url):
         driver.maximize_window()

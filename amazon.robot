@@ -3,7 +3,7 @@ Documentation     Simple example for creating keyword resource.
 Library    SeleniumLibrary
 Resource    library.robot
 Suite Setup    launch browser    https://www.amazon.in
-Suite Teardown    custom_keywords.AmazonUI.close_browser
+Suite Teardown    custom_keywords.MyKeywords.close_browser
 
 *** Variables ***
 ${WEBSITE URL}      https://www.amazon.in
@@ -14,7 +14,7 @@ ${BROWSER}          Chrome
 Select Category
     select_category    Mobiles, Computers    All Mobile Phones
 
-Search item and get page details
+Search item
     search item    iphoneX
 
 Select Brand
