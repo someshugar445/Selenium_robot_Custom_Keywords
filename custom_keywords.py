@@ -20,10 +20,10 @@ actions = ActionChains(driver)
 
 
 class AmazonUI():
-    @keyword('sample_login')
-    def sample(self):
+    @keyword('launch browser')
+    def sample(self, url):
         driver.maximize_window()
-        driver.get("https://www.amazon.in")
+        driver.get(url)
 
     @keyword('search item')
     def search_item(self, item_name):
