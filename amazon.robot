@@ -16,11 +16,13 @@ Select Category
 
 Search item and get page details
     search item    iphoneX
+
+Select Brand
+    select_brand    Apple
+
+Save Screenshot and data
     save_screenshot
     print_data
-
-
-
 
 
 
