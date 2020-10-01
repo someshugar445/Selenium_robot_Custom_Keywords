@@ -1,3 +1,3 @@
 *** Settings ***
 Documentation    Suite description
-Library    myfile.AmazonUI
+Library    custom_keywords.AmazonUI

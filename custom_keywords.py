@@ -10,11 +10,14 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 
 import xlsxwriter
+
 workbook = xlsxwriter.Workbook('Data_list.xlsx')
 worksheet = workbook.add_worksheet()
 from robot.api.deco import keyword
+
 driver = webdriver.Chrome(r"C:\Users\sougar\Downloads\chromedriver_win32\chromedriver.exe")
 actions = ActionChains(driver)
+
 
 class AmazonUI():
     @keyword('sample_login')
@@ -23,26 +26,27 @@ class AmazonUI():
         driver.get("https://www.amazon.in")
 
     @keyword('search item')
-    def search_item(self,item_name):
+    def search_item(self, item_name):
         driver.find_element_by_id("twotabsearchtextbox").send_keys("{}".format(item_name))
         driver.find_element_by_xpath('//*[@id="nav-search"]/form/div[2]/div/input').click()
 
     @keyword('select_category')
-    def select_category(self,category,sub_category):
+    def select_category(self, category, sub_category):
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "nav-hamburger-menu")))
         driver.find_element_by_xpath("//a[@role='button' and @aria-label='Open Menu']").click()
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "hmenu-content")))
-#        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//div[@class='hmenu-item hmenu-title' and contains(text(),'mobiles, tablets & more')]")))
         category = driver.find_element_by_xpath("//a[@class='hmenu-item']/div[contains(text(),'{}')]".format(category))
         category.click()
-        Sub_category = driver.find_element_by_xpath("//a[@class='hmenu-item' and contains(text(),'{}')]".format(sub_category))
-        Sub_category.click()
+        sub_category = driver.find_element_by_xpath(
+            "//a[@class='hmenu-item' and contains(text(),'{}')]".format(sub_category))
+        sub_category.click()
         time.sleep(1)
 
     @keyword('select_brand')
-    def select_brand(self,brand):
+    def select_brand(self, brand):
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "brandsRefinements")))
-        brand = driver.find_element_by_xpath('//div[@id="brandsRefinements"]//span[contains(text(),"{}")]'.format(brand))
+        brand = driver.find_element_by_xpath(
+            '//div[@id="brandsRefinements"]//span[contains(text(),"{}")]'.format(brand))
         brand.location_once_scrolled_into_view
         brand.click()
         time.sleep(1)
@@ -50,7 +54,9 @@ class AmazonUI():
     @keyword('select_screen')
     def select_screen(self, screen_size):
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "brandsRefinements")))
-        screen = driver.find_element_by_xpath('//ul[@class="a-unordered-list a-nostyle a-vertical a-spacing-medium"]//span[contains(text(),"{}")]'.format(screen_size))
+        screen = driver.find_element_by_xpath(
+            '//ul[@class="a-unordered-list a-nostyle a-vertical a-spacing-medium"]//span[contains(text(),"{}")]'.format(
+                screen_size))
         screen.location_once_scrolled_into_view
         screen.click()
         time.sleep(1)
