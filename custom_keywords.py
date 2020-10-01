@@ -28,7 +28,7 @@ class AmazonUI():
     @keyword('search item')
     def search_item(self, item_name):
         driver.find_element_by_id("twotabsearchtextbox").send_keys("{}".format(item_name))
-        driver.find_element_by_xpath('//*[@id="nav-search"]/form/div[2]/div/input').click()
+        driver.find_element_by_xpath('//*[@id="nav-search-submit-text"]').click()
 
     @keyword('select_category')
     def select_category(self, category, sub_category):

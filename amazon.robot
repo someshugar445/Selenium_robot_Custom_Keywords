@@ -13,9 +13,8 @@ ${BROWSER}          Chrome
 Open Test Website And Close Browser
 #    select_category    Mobiles, Computers    All Mobile Phones
     search item    iphoneX
-    Press Key    locator_here    ENTER
     select_brand    Apple
-    select_screen    5.5
+#    select_screen    5.5
 #    save_screenshot
     print_data
 
