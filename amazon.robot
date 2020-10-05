@@ -15,16 +15,14 @@ Select Category
     select_category    Mobiles, Computers    All Mobile Phones
 
 Search item
-    search item    iphoneX
+    search item    Apple iphone XS
 
 Select Brand
     select_brand    Apple
 
 Save Screenshot and data
     save_screenshot
-    print_data
-
-
+    write_to_file
 
 
 

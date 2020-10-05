@@ -10,9 +10,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 
 import xlsxwriter
-
-workbook = xlsxwriter.Workbook('Data_list.xlsx')
-worksheet = workbook.add_worksheet()
+import csv
 from robot.api.deco import keyword
 
 driver = webdriver.Chrome(r"C:\Users\sougar\Downloads\chromedriver_win32\chromedriver.exe")
@@ -72,15 +70,28 @@ class MyKeywords():
     def save_screenshot(self):
         driver.save_screenshot('WebsiteScreenShot.png')
 
-    @keyword('print_data')
-    def print_data(self):
-        row = 0
-        column = 0
-        data = driver.find_element_by_xpath('//*[@id="search"]')
-        content = data.find_elements_by_tag_name('a')
+    @keyword('write_to_file')
+    def write_to_file(self):
+        workbook = xlsxwriter.Workbook('Data_list.xlsx')
+        worksheet = workbook.add_worksheet()
+        # write column names
+        worksheet.write(0, 0, "Product_Name")
+        worksheet.write(0, 1, "No of Ratings")
+        worksheet.write(0, 2, "Selling Price")
+        worksheet.write(0, 3, "Cost Price & Discount")
+        row = 1
+        # data = driver.find_element_by_xpath('//*[@id="search"]')
+        # content = data.find_elements_by_tag_name('a')
+        content = driver.find_elements_by_class_name('sg-col-inner')
+        content = content[20:]
         for item in content:
             text = item.text
-            worksheet.write(row, column, text)
+            text = text.split('\n')
+            text = text[:4]
+            column = 0
+            for value in text:
+                worksheet.write(row, column, value)
+                column += 1
             row += 1
         workbook.close()
 
