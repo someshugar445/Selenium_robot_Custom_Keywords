@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Simple example for creating keyword resource.
-Library    SeleniumLibrary
+Library    Selenium2Library
 Resource    library.robot
 Suite Setup    launch browser    https://www.amazon.in
 Suite Teardown    custom_keywords.MyKeywords.close_browser

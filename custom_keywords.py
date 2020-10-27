@@ -8,16 +8,18 @@ from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
-
+import os
 import xlsxwriter
 import csv
 from robot.api.deco import keyword
 
-driver = webdriver.Chrome(r"C:\Users\sougar\Downloads\chromedriver_win32\chromedriver.exe")
+
+CWD = os.getcwd()
+driver = webdriver.Chrome(os.path.join(CWD, "driver", "chromedriver.exe"))
 actions = ActionChains(driver)
 
 
-class MyKeywords():
+class MyKeywords:
     @keyword('launch browser')
     def sample(self, url):
         driver.maximize_window()
